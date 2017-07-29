@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Exploring Mars</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">oberlab_git</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="terminal_intro.html">Terminal</a>
+</li>
+<li>
+  <a href="git_intro.html">Git</a>
+</li>
+<li>
+  <a href="oberlabtk_intro.html">oberlab-tk</a>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/smozaffari/oberlab_git">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Exploring Mars</h1>
+
+</div>
+
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+<!-- Update knitr chunk options -->
+<!-- Insert the date the file was last updated -->
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+<div id="create-a-local-git-repository" class="section level2">
+<h2>Create a local git repository</h2>
+<p>Once Git is configured, we can start using it. Let’s create a directory for our work and then move into that directory:</p>
+<pre class="bash"><code>cd ~/Desktop
+mkdir planets</code></pre>
+<p>Then we tell Git to make <code>planets</code> a [repository] ;a place where Git can store versions of our files:</p>
+<pre class="bash"><code>git init</code></pre>
+<pre><code>Initialized empty Git repository in /Users/saharmozaffari1/Desktop/planets/.git/</code></pre>
+<p>If we use <code>ls</code> to show the directory’s contents, it appears that nothing has changed:</p>
+<pre class="bash"><code>ls</code></pre>
+<p>But if we add the <code>-a</code> flag to show everything, we can see that Git has created a hidden directory within <code>planets</code> called <code>.git</code>:</p>
+<pre class="bash"><code>ls -a</code></pre>
+<pre><code>.
+..
+.git</code></pre>
+<p>Git stores information about the project in this special sub-directory. If we ever delete it, we will lose the project’s history.</p>
+<p>We can check that everything is set up correctly by asking Git to tell us the status of our project:</p>
+<pre class="bash"><code>git status</code></pre>
+<pre><code>On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)</code></pre>
+<hr />
+</div>
+<div id="tracking-changes" class="section level2">
+<h2>Tracking changes</h2>
+<div id="initial-commit" class="section level3">
+<h3>Initial commit</h3>
+<p>Let’s create a file called <code>mars.txt</code> that contains some notes about the Red Planet’s suitability as a base. (We’ll use <code>nano</code> to edit the file; you can use whatever editor you like. In particular, this does not have to be the <code>core.editor</code> you set globally earlier.)</p>
+<pre class="bash"><code>nano mars.txt</code></pre>
+<p>Type the text below into the <code>mars.txt</code> file:</p>
+<pre><code>Cold and dry, but everything is my favorite color</code></pre>
+<p><code>mars.txt</code> now contains a single line, which we can see by running:</p>
+<pre class="bash"><code>ls</code></pre>
+<pre><code>mars.txt</code></pre>
+<pre class="bash"><code>cat mars.txt</code></pre>
+<pre><code>Cold and dry, but everything is my favorite color</code></pre>
+<p>If we check the status of our project again, Git tells us that it’s noticed the new file:</p>
+<pre class="bash"><code>git status</code></pre>
+<pre><code>On branch master
+
+Initial commit
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    mars.txt
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p>The “untracked files” message means that there’s a file in the directory that Git isn’t keeping track of. We can tell Git to track a file using <code>git add</code>:</p>
+<pre class="bash"><code>git add mars.txt</code></pre>
+<p>and then check that the right thing happened:</p>
+<pre class="bash"><code>git status</code></pre>
+<pre><code>On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+
+    new file:   mars.txt</code></pre>
+<p>Git now knows that it’s supposed to keep track of <code>mars.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
+<pre class="bash"><code>git commit -m &quot;Start notes on Mars as a base&quot;</code></pre>
+<pre><code>[master (root-commit) 6f931d7] Start notes on Mars as a base
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mars.txt</code></pre>
+<p>When we run <code>git commit</code>, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a [commit] (or [revision]) and its short identifier is <code>f22b25e</code> (Your commit may have another identifier.)</p>
+<p>We use the <code>-m</code> flag (for “message”) to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run <code>git commit</code> without the <code>-m</code> option, Git will launch <code>nano</code> (or whatever other editor we configured as <code>core.editor</code>) so that we can write a longer message.</p>
+<p>[Good commit messages] start with a brief (&lt;50 characters) summary of changes made in the commit. If you want to go into more detail, add a blank line between the summary line and your additional notes.</p>
+<p>If we run <code>git status</code> now:</p>
+<pre class="bash"><code>git status</code></pre>
+<pre><code>On branch master
+nothing to commit, working tree clean</code></pre>
+<p>it tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
+<pre class="bash"><code>git log</code></pre>
+<pre><code>commit 6f931d7def693bcf85df05e8af639f4d9bf0429f
+Author: Sahar V. Mozaffari &lt;smozaffari@uchicago.edu&gt;
+Date:   Sat Jul 29 13:39:34 2017 -0500
+
+    Start notes on Mars as a base</code></pre>
+<p><code>git log</code> lists all commits made to a repository in reverse chronological order. The listing for each commit includes the commit’s full identifier (which starts with the same characters as the short identifier printed by the <code>git commit</code> command earlier), the commit’s author, when it was created, and the log message Git was given when the commit was created.</p>
+<hr />
+</div>
+<div id="editing-files" class="section level3">
+<h3>Editing files</h3>
+<p>Now suppose Dracula adds more information to the file. (Again, we’ll edit with <code>nano</code> and then <code>cat</code> the file to show its contents; you may use a different editor, and don’t need to <code>cat</code>.)</p>
+<pre class="bash"><code>nano mars.txt
+cat mars.txt</code></pre>
+<pre><code>Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman</code></pre>
+<p>When we run <code>git status</code> now, it tells us that a file it already knows about has been modified:</p>
+<pre class="bash"><code>git status</code></pre>
+<pre><code>On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   mars.txt
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+<p>The last line is the key phrase: “no changes added to commit”. We have changed this file, but we haven’t told Git we will want to save those changes (which we do with <code>git add</code>) nor have we saved them (which we do with <code>git commit</code>). So let’s do that now. It is good practice to always review our changes before saving them. We do this using <code>git diff</code>. This shows us the differences between the current state of the file and the most recently saved version:</p>
+<pre class="bash"><code>git diff</code></pre>
+<pre><code>diff --git a/mars.txt b/mars.txt
+index df0654a..315bf3a 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,2 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman</code></pre>
+<p>The output is cryptic because it is actually a series of commands for tools like editors and <code>patch</code> telling them how to reconstruct one file given the other. If we break it down into pieces:</p>
+<ol style="list-style-type: decimal">
+<li>The first line tells us that Git is producing output similar to the Unix <code>diff</code> command comparing the old and new versions of the file.</li>
+<li>The second line tells exactly which versions of the file Git is comparing; <code>df0654a</code> and <code>315bf3a</code> are unique computer-generated labels for those versions.</li>
+<li>The third and fourth lines once again show the name of the file being changed.</li>
+<li>The remaining lines are the most interesting, they show us the actual differences and the lines on which they occur. In particular, the <code>+</code> markers in the first column show where we have added lines.</li>
+</ol>
+<p>After reviewing our change, it’s time to commit it:</p>
+<pre class="bash"><code>git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;
+git status</code></pre>
+<pre><code>On branch master
+Changes not staged for commit:
+    modified:   mars.txt
+
+no changes added to commit
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   mars.txt
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+<p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
+<pre class="bash"><code>git add mars.txt
+git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;</code></pre>
+<pre><code>[master 239822f] Add concerns about effects of Mars&#39; moons on Wolfman
+ 1 file changed, 1 insertion(+)</code></pre>
+<p>Git insists that we add files to the set we want to commit before actually committing anything because we may not want to commit everything at once. For example, suppose we’re adding a few citations to our supervisor’s work to our thesis. We might want to commit those additions, and the corresponding addition to the bibliography, but <em>not</em> commit the work we’re doing on the conclusion (which we haven’t finished yet).</p>
+<p>To allow for this, Git has a special <em>staging area</em> where it keeps track of things that have been added to the current [change set] but not yet committed.</p>
+<hr />
+</div>
+</div>
+<div id="recap" class="section level2">
+<h2>Recap</h2>
+<p>To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (<code>git add</code>) and then commit the staged changes to the repository (<code>git commit</code>):</p>
+</div>
+
+<hr>
+<p>
+    This <a href="http://rmarkdown.rstudio.com">R Markdown</a> site was created with <a href="https://github.com/jdblischak/workflowr">workflowr</a>
+</p>
+<hr>
+
+<!-- To enable disqus, uncomment the section below and provide your disqus_shortname -->
+
+<!-- disqus
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'rmarkdown'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+-->
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

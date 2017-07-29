@@ -9,9 +9,10 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="First Last" />
 
 
-<title>Starting with git</title>
+<title>Untitled</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -309,7 +310,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Starting with git</h1>
+<h1 class="title toc-ignore">Untitled</h1>
+<h4 class="author"><em>First Last</em></h4>
+<h4 class="date"><em>YYYY-MM-DD</em></h4>
 
 </div>
 
@@ -318,97 +321,37 @@ div.tocify {
 shared across the workflowr files. -->
 <!-- Update knitr chunk options -->
 <!-- Insert the date the file was last updated -->
+<p><strong>Last updated:</strong> 2017-07-29</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
+<p><strong>Code version:</strong> d33a388</p>
 <!-- Add your analysis here -->
-<div id="version-control-for-mars" class="section level3">
-<h3>Version Control for Mars</h3>
-<p>Wolfman and Dracula have been hired by Universal Missions (a space services spinoff from Euphoric State University) to investigate if it is possible to send their next planetary lander to Mars. They want to be able to work on the plans at the same time, but they have run into problems doing this in the past. If they take turns, each one will spend a lot of time waiting for the other to finish, but if they work on their own copies and email changes back and forth things will be lost, overwritten, or duplicated.</p>
-<p>A colleague suggests using version control to manage their work. Version control is better than mailing files back and forth:</p>
-<ul>
-<li><p>Nothing that is committed to version control is ever lost, unless you work really, really hard at it. Since all old versions of files are saved, it’s always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.</p></li>
-<li><p>As we have this record of who made what changes when, we know who to ask if we have questions later on, and, if needed, revert to a previous version, much like the “undo” feature in an editor.</p></li>
-<li><p>When several people collaborate in the same project, it’s possible to accidentally overlook or overwrite someone’s changes. The version control system automatically notifies users whenever there’s a conflict between one person’s work and another’s.</p></li>
-</ul>
-<p>Teams are not the only ones to benefit from version control: lone researchers can benefit immensely. Keeping a record of what was changed, when, and why is extremely useful for all researchers if they ever need to come back to the project later on (e.g., a year later, when memory has faded).</p>
-<p>Version control is the lab notebook of the digital world: it’s what professionals use to keep track of what they’ve done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well. And it isn’t just for software: books, papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.</p>
+<div id="back-to-main-menu" class="section level4">
+<h4><a href="git_intro.html">Back to Main Menu</a></h4>
 </div>
-<div id="github-account" class="section level3">
-<h3>Github Account</h3>
-<p>First we need to make a github account at <a href="www.github.com" class="uri">www.github.com</a></p>
-<pre class="bash"><code>git config --global user.name &quot;Vlad Dracula&quot;
-git config --global user.email &quot;vlad@tran.sylvan.ia&quot;
-git config --global color.ui &quot;auto&quot;
-git config --global core.editor &quot;emacs&quot;</code></pre>
-<p>(Please use your own name and email address instead of Dracula’s.)</p>
-<p>He also has to set his favorite text editor, following this table:</p>
-<table>
-<colgroup>
-<col width="29%" />
-<col width="70%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Editor</th>
-<th align="left">Configuration command</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">nano</td>
-<td align="left"><code>$ git config --global core.editor &quot;nano -w&quot;</code></td>
-</tr>
-<tr class="even">
-<td align="left">Text Wrangler</td>
-<td align="left"><code>$ git config --global core.editor &quot;edit -w&quot;</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Sublime Text (Mac)</td>
-<td align="left"><code>$ git config --global core.editor &quot;subl -n -w&quot;</code></td>
-</tr>
-<tr class="even">
-<td align="left">Sublime Text (Win)</td>
-<td align="left"><code>$ git config --global core.editor &quot;'c:/program files/sublime text 2/sublime_text.exe' -w&quot;</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Notepad++ (Win)</td>
-<td align="left"><code>$ git config --global core.editor &quot;'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin&quot;</code></td>
-</tr>
-<tr class="even">
-<td align="left">Kate (Linux)</td>
-<td align="left"><code>$ git config --global core.editor &quot;kate&quot;</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Gedit (Linux)</td>
-<td align="left"><code>$ git config --global core.editor &quot;gedit -s&quot;</code></td>
-</tr>
-</tbody>
-</table>
-<p>Git commands are written <code>git verb</code>, where <code>verb</code> is what we actually want it to do. In this case, we’re telling Git:</p>
-<ul>
-<li>our name and email address,<br />
-</li>
-<li>to colorize output,<br />
-</li>
-<li>what our favorite text editor is, and<br />
-</li>
-<li>that we want to use these settings globally (i.e., for every project),</li>
-</ul>
-<p>The four commands above only need to be run once: the flag <code>--global</code> tells Git to use the settings for every project on this computer.</p>
-<p>You can check your settings at any time:</p>
-<pre class="bash"><code>git config --list</code></pre>
-<pre><code>credential.helper=osxkeychain
-user.name=Sahar V. Mozaffari
-user.email=smozaffari@uchicago.edu
-core.editor=emacs
-core.bare=false
-core.repositoryformatversion=0
-core.filemode=true
-core.ignorecase=true
-core.precomposeunicode=true
-core.logallrefupdates=true
-remote.origin.url=https://github.com/smozaffari/oberlab_git.git
-remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*</code></pre>
+<div id="session-information" class="section level2">
+<h2>Session information</h2>
+<!-- Insert the session information into the document -->
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.4.1 (2017-06-30)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS Sierra 10.12.5
+
+Matrix products: default
+BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+ [1] compiler_3.4.1  backports_1.1.0 magrittr_1.5    rprojroot_1.2  
+ [5] tools_3.4.1     htmltools_0.3.6 yaml_2.1.14     Rcpp_0.12.12   
+ [9] stringi_1.1.5   rmarkdown_1.6   knitr_1.16      git2r_0.19.0   
+[13] stringr_1.2.0   digest_0.6.12   evaluate_0.10.1</code></pre>
 </div>
 
 <hr>
