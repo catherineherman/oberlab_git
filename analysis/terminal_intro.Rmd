@@ -76,9 +76,11 @@ Here are some commands you can type once you have a terminal open:
 ```.```: Starts at the current directory  
 
 ####Moving backward
-```..``` : Steps back a directory 
-ex. ```cd ..``: changes directory to the directory above   
-ex. ```ls .```: lists all non-hidden files in directory above   
+```..``` : Steps back a directory  
+
+ex. ```cd ..```: changes directory to the directory above  
+
+ex. ```ls ..```: lists all non-hidden files in directory above  
  
 
 ####User directory

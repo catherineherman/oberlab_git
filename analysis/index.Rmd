@@ -8,12 +8,12 @@ output:
 Most of the material for this github workshop comes from Software Carpentry and John Blischak's paper.
 
 
-The goal of this workshop is to introduce you to the terminal and git.
+The goal of this workshop is to introduce you to the terminal and git (and maybe even [workflowr](https://github.com/jdblischak/workflowr)).
 
 
-###Lesson 1: ["Wait, what is a terminal?"](terminal_intro.html)  
+* Lesson 1: ["Wait, what is a terminal?"](terminal_intro.html)  
   
   
 
-###Lesson 2: ["I know what the terminal is, but what is git?"](beginner.html)
+* Lesson 2: ["I know what the terminal is, but what is git?"](beginner.html)
 
