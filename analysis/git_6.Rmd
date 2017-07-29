@@ -14,18 +14,20 @@ knitr::read_chunk("chunks.R")
 ```
 
 <!-- Insert the date the file was last updated -->
-```{r last-updated, echo=FALSE, results='asis'}
+```{r last-updated, echo=FALSE, results='asis', include=FALSE}
 ```
 
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-```{r code-version, echo=FALSE, results='asis'}
+```{r code-version, echo=FALSE, results='asis', include=FALSE}
 ```
 
 <!-- Add your analysis here -->
-## Remote repositories are and why they are useful.
-> *   Clone a remote repository. 
-> *   Push to or pull from a remote repository.
+
+#### [Back to Main Menu](git_intro.html)   
+
+## Remote repositories are and why they are useful 
+
 
 Version control really comes into its own
 when we begin to collaborate with other people.
@@ -94,3 +96,46 @@ git remote -v
 origin   https://github.com/vlad/planets.git (push)
 origin   https://github.com/vlad/planets.git (fetch)
 ```
+
+The name `origin` is a local nickname for your remote repository:
+we could use something else if we wanted to,
+but `origin` is by far the most common choice.
+
+Once the nickname `origin` is set up,
+this command will push the changes from our local repository
+to the repository on GitHub:
+
+```{bash, eval=FALSE}
+git push origin master
+```
+
+We can pull changes from the remote repository to the local one as well:
+```{bash, eval=FALSE}
+git pull origin master
+```
+
+Pulling has no effect in this case
+because the two repositories are already synchronized.
+If someone else had pushed some changes to the repository on GitHub,
+though,
+this command would download them to our local repository.
+
+### Clone a remote repository 
+
+Let's say you are working on a project with someone, or you see someon's github repository you want to work with/on. We want to clone the remote repository to be local.  
+
+```{bash, eval=FALSE}
+git clone https://github.com/vlad/planets.git
+```
+
+The new collaborator can now make a change in their copy of the repository and push to the remote repository. 
+
+### Push to or pull from a remote repository.
+
+We can now download changes into the original repository on our machine:
+```{bash, eval=FALSE}
+git pull origin master
+```
+
+![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/r_216778_dY73E.jpg?raw=true){ width=50% }
+

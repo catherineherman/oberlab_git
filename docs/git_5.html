@@ -321,22 +321,18 @@ shared across the workflowr files. -->
 <p><strong>Last updated:</strong> 2017-07-29</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 54eee1f</p>
+<p><strong>Code version:</strong> af0ff0c</p>
 <!-- Add your analysis here -->
 <div id="back-to-main-menu" class="section level4">
 <h4><a href="git_intro.html">Back to Main Menu</a></h4>
 <p>What if we have files that we do not want Git to track for us, like backup files created by our editor or intermediate files created during data analysis. Let’s create a few dummy files:</p>
 <pre class="bash"><code>mkdir results
 touch a.dat b.dat c.dat results/a.out results/b.out</code></pre>
+<pre><code>mkdir: results: File exists</code></pre>
 <p>and see what Git says:</p>
 <pre class="bash"><code>git status</code></pre>
 <pre><code>On branch master
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-
-    .gitignore
-
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+nothing to commit, working tree clean</code></pre>
 <p>Putting these files under version control would be a waste of disk space. What’s worse, having them all listed could distract us from changes that actually matter, so let’s tell Git to ignore them.</p>
 <p>We do this by creating a file in the root directory of our project called <code>.gitignore</code>:</p>
 <pre class="bash"><code>nano .gitignore
@@ -347,19 +343,13 @@ results/</code></pre>
 <p>Once we have created this file, the output of <code>git status</code> is much cleaner:</p>
 <pre class="bash"><code>git status</code></pre>
 <pre><code>On branch master
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-
-    .gitignore
-
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+nothing to commit, working tree clean</code></pre>
 <p>The only thing Git notices now is the newly-created <code>.gitignore</code> file. You might think we wouldn’t want to track it, but everyone we’re sharing our repository with will probably want to ignore the same things that we’re ignoring. Let’s add and commit <code>.gitignore</code>:</p>
 <pre class="bash"><code>git add .gitignore
 git commit -m &quot;Add the ignore file&quot;
 git status</code></pre>
-<pre><code>[master 17947fc] Add the ignore file
- 1 file changed, 2 insertions(+)
- create mode 100644 .gitignore
+<pre><code>On branch master
+nothing to commit, working tree clean
 On branch master
 nothing to commit, working tree clean</code></pre>
 <p>As a bonus, using <code>.gitignore</code> helps us avoid accidentally adding files to the repository that we don’t want to track:</p>
@@ -376,6 +366,10 @@ Ignored files:
     results/
 
 nothing to commit, working tree clean</code></pre>
+<div class="figure">
+<img src="https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/vc-xkcd.jpg?raw=true" style="width:50.0%" />
+
+</div>
 <!-- Insert the session information into the document -->
 </div>
 

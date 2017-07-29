@@ -1,7 +1,5 @@
 ---
 title: "Intro to using the Terminal"
-author: "Sahar Mozaffari"
-date: 2017-07-28
 output: html_document
 ---
 

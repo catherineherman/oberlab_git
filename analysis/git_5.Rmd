@@ -97,7 +97,7 @@ We can also always see the status of ignored files if we want:
 git status --ignored
 ```
 
-
+![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/vc-xkcd.jpg?raw=true){ width=50% }
 
 
 <!-- Insert the session information into the document -->

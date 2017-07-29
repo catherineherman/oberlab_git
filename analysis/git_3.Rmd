@@ -268,7 +268,6 @@ where it keeps track of things that have been added to
 the current [change set]
 but not yet committed.  
 
-
   
 * * * * * * *
 ##Recap
@@ -277,4 +276,9 @@ we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
 repository (`git commit`)
 
-###Try doing one on your own!
+##Try on your own!
+Try adding this line to the file and staging and committing it on your own:  
+`But the Mummy will appreciate the lack of humidity`
+
+![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/6a00d8341d3df553ef017743a87369970d.jpg?raw=true){ width=50% }
+

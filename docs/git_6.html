@@ -318,19 +318,14 @@ div.tocify {
 shared across the workflowr files. -->
 <!-- Update knitr chunk options -->
 <!-- Insert the date the file was last updated -->
-<p><strong>Last updated:</strong> 2017-07-29</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 54eee1f</p>
 <!-- Add your analysis here -->
-<div id="remote-repositories-are-and-why-they-are-useful." class="section level2">
-<h2>Remote repositories are and why they are useful.</h2>
-<blockquote>
-<ul>
-<li>Clone a remote repository.</li>
-<li>Push to or pull from a remote repository.</li>
-</ul>
-</blockquote>
+<div id="back-to-main-menu" class="section level4">
+<h4><a href="git_intro.html">Back to Main Menu</a></h4>
+</div>
+<div id="remote-repositories-are-and-why-they-are-useful" class="section level2">
+<h2>Remote repositories are and why they are useful</h2>
 <p>Version control really comes into its own when we begin to collaborate with other people. We already have most of the machinery we need to do this; the only thing missing is to copy changes from one repository to another.</p>
 <p>Systems like Git allow us to move work between any two repositories. In practice, though, it’s easiest to use one copy as a central hub, and to keep it on the web rather than on someone’s laptop. Most programmers use hosting services like <a href="http://github.com">GitHub</a>, <a href="http://bitbucket.org">BitBucket</a> or <a href="http://gitlab.com/">GitLab</a> to hold those master copies; we’ll explore the pros and cons of this in the final section of this lesson.</p>
 <p>Let’s start by sharing the changes we’ve made to our current project with the world. Log in to GitHub, then click on the icon in the top right corner to create a new repository called <code>planets</code>.</p>
@@ -348,6 +343,27 @@ git init</code></pre>
 <pre class="bash"><code>git remote -v</code></pre>
 <pre class="output"><code>origin   https://github.com/vlad/planets.git (push)
 origin   https://github.com/vlad/planets.git (fetch)</code></pre>
+<p>The name <code>origin</code> is a local nickname for your remote repository: we could use something else if we wanted to, but <code>origin</code> is by far the most common choice.</p>
+<p>Once the nickname <code>origin</code> is set up, this command will push the changes from our local repository to the repository on GitHub:</p>
+<pre class="bash"><code>git push origin master</code></pre>
+<p>We can pull changes from the remote repository to the local one as well:</p>
+<pre class="bash"><code>git pull origin master</code></pre>
+<p>Pulling has no effect in this case because the two repositories are already synchronized. If someone else had pushed some changes to the repository on GitHub, though, this command would download them to our local repository.</p>
+<div id="clone-a-remote-repository" class="section level3">
+<h3>Clone a remote repository</h3>
+<p>Let’s say you are working on a project with someone, or you see someon’s github repository you want to work with/on. We want to clone the remote repository to be local.</p>
+<pre class="bash"><code>git clone https://github.com/vlad/planets.git</code></pre>
+<p>The new collaborator can now make a change in their copy of the repository and push to the remote repository.</p>
+</div>
+<div id="push-to-or-pull-from-a-remote-repository." class="section level3">
+<h3>Push to or pull from a remote repository.</h3>
+<p>We can now download changes into the original repository on our machine:</p>
+<pre class="bash"><code>git pull origin master</code></pre>
+<div class="figure">
+<img src="https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/r_216778_dY73E.jpg?raw=true" style="width:50.0%" />
+
+</div>
+</div>
 </div>
 
 <hr>

@@ -5,7 +5,7 @@ output:
     toc: false
 ---
 
-Most of the material for this github workshop comes from Software Carpentry and John Blischak's paper.
+Most of the material for this github workshop comes from [Software Carpentry](https://software-carpentry.org/lessons/) and [John Blischak's paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668).
 
 
 The goal of this workshop is to introduce you to the terminal and git (and maybe even [workflowr](https://github.com/jdblischak/workflowr)).
@@ -16,4 +16,10 @@ The goal of this workshop is to introduce you to the terminal and git (and maybe
   
 
 * Lesson 2: ["I know what the terminal is, but what is git?"](git_intro.html)
-
+    * [Why Should I use git?](git_2.html)   
+    * [Setting up git with Github](git_1.html)   
+    * [Starting with git](git_3.html)   
+    * [Tracking history](git_4.html)
+    * [Ignoring files](git_5.html)
+    * [GitHub](git_6.html)
+    * [Conflicts](git_7.html)

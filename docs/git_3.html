@@ -320,7 +320,6 @@ shared across the workflowr files. -->
 <!-- Insert the date the file was last updated -->
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<pre><code>rm: .git: No such file or directory</code></pre>
 <div id="back-to-main-menu" class="section level4">
 <h4><a href="git_intro.html">Back to Main Menu</a></h4>
 </div>
@@ -400,7 +399,7 @@ Untracked files:
     .gitignore</code></pre>
 <p>Git now knows that it’s supposed to keep track of <code>mars.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
 <pre class="bash"><code>git commit -m &quot;Start notes on Mars as a base&quot;</code></pre>
-<pre><code>[master (root-commit) f979824] Start notes on Mars as a base
+<pre><code>[master (root-commit) 91e65d8] Start notes on Mars as a base
  1 file changed, 1 insertion(+)
  create mode 100644 mars.txt</code></pre>
 <p>When we run <code>git commit</code>, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a [commit] (or [revision]) and its short identifier is <code>f22b25e</code> (Your commit may have another identifier.)</p>
@@ -417,9 +416,9 @@ Untracked files:
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p>it tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
 <pre class="bash"><code>git log</code></pre>
-<pre><code>commit f9798248484bca91a26f5812660db802d71e9ea8
+<pre><code>commit 91e65d86c28ec3efc750518051f866aaa70f0685
 Author: Sahar V. Mozaffari &lt;smozaffari@uchicago.edu&gt;
-Date:   Sat Jul 29 14:22:59 2017 -0500
+Date:   Sat Jul 29 16:05:20 2017 -0500
 
     Start notes on Mars as a base</code></pre>
 <p><code>git log</code> lists all commits made to a repository in reverse chronological order. The listing for each commit includes the commit’s full identifier (which starts with the same characters as the short identifier printed by the <code>git commit</code> command earlier), the commit’s author, when it was created, and the log message Git was given when the commit was created.</p>
@@ -490,7 +489,7 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 <p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
 <pre class="bash"><code>git add mars.txt
 git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;</code></pre>
-<pre><code>[master 2614a7a] Add concerns about effects of Mars&#39; moons on Wolfman
+<pre><code>[master 2d141f0] Add concerns about effects of Mars&#39; moons on Wolfman
  1 file changed, 1 insertion(+)</code></pre>
 <p>Git insists that we add files to the set we want to commit before actually committing anything because we may not want to commit everything at once. For example, suppose we’re adding a few citations to our supervisor’s work to our thesis. We might want to commit those additions, and the corresponding addition to the bibliography, but <em>not</em> commit the work we’re doing on the conclusion (which we haven’t finished yet).</p>
 <p>To allow for this, Git has a special <em>staging area</em> where it keeps track of things that have been added to the current [change set] but not yet committed.</p>
@@ -500,8 +499,14 @@ git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quo
 <div id="recap" class="section level2">
 <h2>Recap</h2>
 <p>To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (<code>git add</code>) and then commit the staged changes to the repository (<code>git commit</code>)</p>
-<div id="try-doing-one-on-your-own" class="section level3">
-<h3>Try doing one on your own!</h3>
+</div>
+<div id="try-on-your-own" class="section level2">
+<h2>Try on your own!</h2>
+<p>Try adding this line to the file and staging and committing it on your own:<br />
+<code>But the Mummy will appreciate the lack of humidity</code></p>
+<div class="figure">
+<img src="https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/6a00d8341d3df553ef017743a87369970d.jpg?raw=true" style="width:50.0%" />
+
 </div>
 </div>
 
