@@ -28,9 +28,10 @@ knitr::opts_knit$set(root.dir = '~/Desktop/planets')
 
 ```{bash, echo=FALSE}
 rm -r .git
-rm *
+rm -r *
 ```
 
+#### [Back to Main Menu](git_intro.html)   
 
 ##Create a local git repository
 
@@ -266,11 +267,14 @@ Git has a special *staging area*
 where it keeps track of things that have been added to
 the current [change set]
 but not yet committed.  
-  
+
+
   
 * * * * * * *
 ##Recap
 To recap, when we want to add changes to our repository,
 we first need to add the changed files to the staging area
 (`git add`) and then commit the staged changes to the
-repository (`git commit`):
+repository (`git commit`)
+
+###Try doing one on your own!

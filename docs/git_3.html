@@ -320,6 +320,9 @@ shared across the workflowr files. -->
 <!-- Insert the date the file was last updated -->
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
+<div id="back-to-main-menu" class="section level4">
+<h4><a href="git_intro.html">Back to Main Menu</a></h4>
+</div>
 <div id="create-a-local-git-repository" class="section level2">
 <h2>Create a local git repository</h2>
 <p>Once Git is configured, we can start using it. Let’s create a directory for our work and then move into that directory:</p>
@@ -384,7 +387,7 @@ Changes to be committed:
     new file:   mars.txt</code></pre>
 <p>Git now knows that it’s supposed to keep track of <code>mars.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
 <pre class="bash"><code>git commit -m &quot;Start notes on Mars as a base&quot;</code></pre>
-<pre><code>[master (root-commit) 6f931d7] Start notes on Mars as a base
+<pre><code>[master (root-commit) 01d3d8a] Start notes on Mars as a base
  1 file changed, 1 insertion(+)
  create mode 100644 mars.txt</code></pre>
 <p>When we run <code>git commit</code>, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a [commit] (or [revision]) and its short identifier is <code>f22b25e</code> (Your commit may have another identifier.)</p>
@@ -396,9 +399,9 @@ Changes to be committed:
 nothing to commit, working tree clean</code></pre>
 <p>it tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
 <pre class="bash"><code>git log</code></pre>
-<pre><code>commit 6f931d7def693bcf85df05e8af639f4d9bf0429f
+<pre><code>commit 01d3d8ac66721280bb41191a5a91a6656a28ff04
 Author: Sahar V. Mozaffari &lt;smozaffari@uchicago.edu&gt;
-Date:   Sat Jul 29 13:39:34 2017 -0500
+Date:   Sat Jul 29 14:20:17 2017 -0500
 
     Start notes on Mars as a base</code></pre>
 <p><code>git log</code> lists all commits made to a repository in reverse chronological order. The listing for each commit includes the commit’s full identifier (which starts with the same characters as the short identifier printed by the <code>git commit</code> command earlier), the commit’s author, when it was created, and the log message Git was given when the commit was created.</p>
@@ -456,7 +459,7 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 <p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
 <pre class="bash"><code>git add mars.txt
 git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;</code></pre>
-<pre><code>[master 239822f] Add concerns about effects of Mars&#39; moons on Wolfman
+<pre><code>[master fe75fee] Add concerns about effects of Mars&#39; moons on Wolfman
  1 file changed, 1 insertion(+)</code></pre>
 <p>Git insists that we add files to the set we want to commit before actually committing anything because we may not want to commit everything at once. For example, suppose we’re adding a few citations to our supervisor’s work to our thesis. We might want to commit those additions, and the corresponding addition to the bibliography, but <em>not</em> commit the work we’re doing on the conclusion (which we haven’t finished yet).</p>
 <p>To allow for this, Git has a special <em>staging area</em> where it keeps track of things that have been added to the current [change set] but not yet committed.</p>
@@ -465,7 +468,10 @@ git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quo
 </div>
 <div id="recap" class="section level2">
 <h2>Recap</h2>
-<p>To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (<code>git add</code>) and then commit the staged changes to the repository (<code>git commit</code>):</p>
+<p>To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (<code>git add</code>) and then commit the staged changes to the repository (<code>git commit</code>)</p>
+<div id="try-doing-one-on-your-own" class="section level3">
+<h3>Try doing one on your own!</h3>
+</div>
 </div>
 
 <hr>

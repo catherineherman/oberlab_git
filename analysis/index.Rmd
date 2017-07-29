@@ -15,5 +15,5 @@ The goal of this workshop is to introduce you to the terminal and git (and maybe
   
   
 
-* Lesson 2: ["I know what the terminal is, but what is git?"](beginner.html)
+* Lesson 2: ["I know what the terminal is, but what is git?"](git_intro.html)
 

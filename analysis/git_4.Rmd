@@ -1,7 +1,5 @@
 ---
-title: "Untitled"
-author: "First Last"
-date: YYYY-MM-DD
+title: "Exploring History"
 output: html_document
 ---
 
@@ -26,10 +24,100 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
-  
 
-## Session information
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = '~/Desktop/planets')
+```
+
+If we want to see what we changed at different steps, we can use `git diff`
+again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to old
+commits:
+
+```{bash}
+git diff HEAD~1 mars.txt
+```
+
+In this way,
+we can build up a chain of commits.
+The most recent end of the chain is referred to as `HEAD`;
+we can refer to previous commits using the `~` notation,
+so `HEAD~1` (pronounced "head minus one")
+means "the previous commit",
+while `HEAD~123` goes back 123 commits from where we are now.
+
+
+We can also refer to commits using
+those long strings of digits and letters
+that `git log` displays.
+These are unique IDs for the changes,
+and "unique" really does mean unique:
+every change to any set of files on any computer
+has a unique 40-character identifier.
+Our first commit was given the ID
+f22b25e3233b4645dabd0d81e651fe074bd8e73b,
+so let's try this:
+
+```{bash, eval=FALSE}
+git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
+
+```
+```{bash, echo=FALSE}
+git diff HEAD~1 mars.txt
+```
+
+That's the right answer,
+but typing out random 40-character strings is annoying,
+so Git lets us use just the first few characters:
+
+```{bash, eval=FALSE}
+git diff f22b25e mars.txt
+```
+
+```{bash, echo=FALSE}
+git diff HEAD~1 mars.txt
+```
+
+All right! So
+we can save changes to files and see what we've changed&mdash;now how
+can we restore older versions of things?
+Let's suppose we accidentally overwrite our file:
+
+```{bash, eval=FALSE}
+nano mars.txt
+```
+
+```{bash, echo=FALSE}
+echo "We will need to manufacture our own oxygen" > mars.txt
+cat mars.txt
+```
+
+We can put things back the way they were
+by using `git checkout`:
+
+```{bash}
+git checkout HEAD mars.txt
+cat mars.txt
+```
+
+As you might guess from its name,
+`git checkout` checks out (i.e., restores) an old version of a file.
+In this case,
+we're telling Git that we want to recover the version of the file recorded in `HEAD`,
+which is the last saved commit.
+If we want to go back even further,
+we can use a commit identifier instead:
+
+```{bash, eval=FALSE}
+git checkout f22b25e mars.txt
+```
+
+It's important to remember that
+we must use the commit number that identifies the state of the repository
+*before* the change we're trying to undo.
+A common mistake is to use the number of
+the commit in which we made the change we're trying to get rid of.
+In the example below, we want to retrieve the state from before the most
+recent commit (`HEAD~1`), which is commit `f22b25e`:
+
 
 <!-- Insert the session information into the document -->
-```{r session-info}
-```

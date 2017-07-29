@@ -29,6 +29,9 @@ knitr::read_chunk("chunks.R")
 * ### [Why Should I use git?](git_2.html)   
 * ### [Setting up git with Github](git_1.html)   
 * ### [Starting with git](git_3.html)   
+* ### [Tracking history](git_4.html)
+* ### [Ignoring files](git_5.html)
+* ### [GitHub](git_6.html)
 
 <!-- Insert the session information into the document -->
 ```{r session-info, echo=FALSE, eval=FALSE}
