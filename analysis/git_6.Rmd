@@ -1,0 +1,96 @@
+---
+title: "GitHub"
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+## Remote repositories are and why they are useful.
+> *   Clone a remote repository. 
+> *   Push to or pull from a remote repository.
+
+Version control really comes into its own
+when we begin to collaborate with other people.
+We already have most of the machinery we need to do this;
+the only thing missing is to copy changes from one repository to another.
+
+Systems like Git allow us to move work between any two repositories.
+In practice,
+though,
+it's easiest to use one copy as a central hub,
+and to keep it on the web rather than on someone's laptop.
+Most programmers use hosting services like
+[GitHub](http://github.com),
+[BitBucket](http://bitbucket.org) or
+[GitLab](http://gitlab.com/)
+to hold those master copies;
+we'll explore the pros and cons of this in the final section of this lesson.
+
+Let's start by sharing the changes we've made to our current project with the world.
+Log in to GitHub,
+then click on the icon in the top right corner to create a new repository called `planets`.  
+
+Name your repository "planets" and then click "Create Repository".  "
+As soon as the repository is created,
+GitHub displays a page with a URL and some information on how to configure your local repository.  
+
+This effectively does the following on GitHub's servers:
+
+```{bash, eval=FALSE}
+mkdir planets
+cd planets
+git init
+```
+
+Our local repository still contains our earlier work on `mars.txt`,
+but the remote repository on GitHub doesn't contain any files yet:
+
+The next step is to connect the two repositories.
+We do this by making the GitHub repository a [remote](reference.html#remote)
+for the local repository.
+The home page of the repository on GitHub includes
+the string we need to identify it.  
+
+Copy that URL from the browser,
+go into the local `planets` repository,
+and run this command:
+
+```{bash, eval=FALSE}
+git remote add origin https://github.com/vlad/planets
+```
+
+```{bash, echo=FALSE, eval=FALSE}
+git remote add origin https://github.com/smozaffari/planets
+```
+
+Make sure to use the URL for your repository rather than Vlad's:
+the only difference should be your username instead of `vlad`.
+
+We can check that the command has worked by running `git remote -v`
+
+```{bash, eval=FALSE}
+git remote -v
+```
+
+```{output}
+origin   https://github.com/vlad/planets.git (push)
+origin   https://github.com/vlad/planets.git (fetch)
+```
