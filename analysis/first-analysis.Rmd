@@ -3,6 +3,7 @@ title: "Untitled"
 author: "First Last"
 date: YYYY-MM-DD
 output: html_document
+toc: false
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
