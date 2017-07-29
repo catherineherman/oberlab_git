@@ -1,0 +1,112 @@
+---
+title: "Intro to using the Terminal"
+author: "Sahar Mozaffari"
+date: 2017-07-28
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+
+*  *  *  *
+##Getting Started
+
+###For OSx:
+
+Open ```/Applications/Utilities/Terminal```
+  Keep in Dock for easy access.
+
+###For Unix:
+
+Search applications for Terminal  
+Keep in Launcher, if you have one, for easy access
+
+###For Windows:
+
+Download Console 2  
+Extract Console.exe  
+Add Console.exe shortcut to Desktop  
+Open Console.exe, go to Edit->Settings and set the shell to PowerShell ```(C:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe)```  
+Set the Startup dir to your User directory  
+Restart Console.exe  
+
+*  *  *  *
+##Getting Help
+Here are some commands you can type once you have a terminal open:
+
+####Manual
+
+```man <command>```: Opens manual page for command. Move up/down with arrow keys, press q to quit
+
+####Listing with details  
+```ls```: List all non-hidden files/folders  
+```ls -a```: List all files/folders  
+```ls -l```: Details list of available files/folders
+
+
+*  *  *  *
+##Moving Around  
+
+####Current path  
+```pwd```: lists current path (present working directory)  
+
+####Change directory  
+```cd```: Changes directory to entered directory (case sensitive)  
+          Folders with spaces in name need to escape space: foo\\ bar  
+
+####Current directory
+```.```: Starts at the current directory  
+
+####Moving backward
+```..``` : Steps back a directory 
+
+####User directory
+```~```: Start at your user directory  
+
+*  *  *  *
+*  *  *  *
+##Files and Folders
+
+####Creating folders:
+```mkdir <foldername> ``` : Makes a folder  
+
+####Removing empty folders:
+```rmdir <foldername>``` : Removes an empty folder  
+
+####Creating files:
+```emacs <file-name>``` 
+
+####Reading and Writing to files:
+```echo <content>``` : Will write content to a file  
+```cat <filename>``` : Will preview all content in a file  
+
+####Moving and renaming Files:
+```mv <filename> <newfilename>``` : Will move or rename file  
+
+####Removing files:
+`r emo::ji("alert")` `r emo::ji("alert")` `r emo::ji("alert")`  
+```rm <filename>``` : Deletes file (DOES NOT MOVE TO TRASH! CANNOT UNDO!)  `r emo::ji("alert")`
+
+<!-- Insert the session information into the document -->
+```{r session-info, eval=FALSE, echo = FALSE}
+## Session information
+
+```
