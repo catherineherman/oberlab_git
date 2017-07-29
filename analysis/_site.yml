@@ -22,7 +22,8 @@ navbar:
       href: https://github.com/smozaffari/oberlab_git
 output:
   html_document:
-    toc: true
+    toc: false
+    toc_float: true
     toc_depth: 4
     theme: flatly
     highlight: textmate
