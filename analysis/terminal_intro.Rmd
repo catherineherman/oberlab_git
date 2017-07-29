@@ -69,7 +69,7 @@ Here are some commands you can type once you have a terminal open:
 ```pwd```: lists current path (present working directory)  
 
 ####Change directory  
-```cd```: Changes directory to entered directory (case sensitive)  
+```cd <directory>```: Changes directory to entered directory (case sensitive)  
           Folders with spaces in name need to escape space: foo\\ bar  
 
 ####Current directory
@@ -77,6 +77,9 @@ Here are some commands you can type once you have a terminal open:
 
 ####Moving backward
 ```..``` : Steps back a directory 
+ex. ```cd ..``: changes directory to the directory above  
+ex. ```ls .```: lists all non-hidden files in directory above  
+
 
 ####User directory
 ```~```: Start at your user directory  
@@ -85,23 +88,23 @@ Here are some commands you can type once you have a terminal open:
 *  *  *  *
 ##Files and Folders
 
-####Creating folders:
+####Creating folders
 ```mkdir <foldername> ``` : Makes a folder  
 
-####Removing empty folders:
+####Removing empty folders
 ```rmdir <foldername>``` : Removes an empty folder  
 
-####Creating files:
+####Creating files
 ```emacs <file-name>``` 
 
-####Reading and Writing to files:
+####Reading and Writing to files
 ```echo <content>``` : Will write content to a file  
 ```cat <filename>``` : Will preview all content in a file  
 
-####Moving and renaming Files:
+####Moving and renaming Files
 ```mv <filename> <newfilename>``` : Will move or rename file  
 
-####Removing files:
+####Removing files
 `r emo::ji("alert")` `r emo::ji("alert")` `r emo::ji("alert")`  
 ```rm <filename>``` : Deletes file (DOES NOT MOVE TO TRASH! CANNOT UNDO!)  `r emo::ji("alert")`
 
