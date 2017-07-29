@@ -32,7 +32,7 @@ to keep track of what one person did and when.
 Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
 
-![](../analysis/fig/phd101212s.png)
+![](fig/phd101212s.png)
 
 We've all been in this situation before: it seems ridiculous to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word's "Track Changes" or Google Docs' version history.
 
@@ -43,7 +43,7 @@ A version control system is a tool that keeps track of these changes for us and 
 
 
 
-> ## The long history of version control systems {.callout}
+> The long history of version control systems {.callout}
 >
 > Automated version control systems are nothing new. Tools like RCS, CVS, or
 > Subversion are considered now legacy systems, offering more limited
