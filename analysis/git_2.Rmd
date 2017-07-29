@@ -2,9 +2,7 @@
 title: "Why Version Control?"
 output: html_document
 ---
-<style type="text/css">
-    div.datatables { height: auto !important;}
-</style>
+
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
 shared across the workflowr files. -->
