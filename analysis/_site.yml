@@ -7,8 +7,14 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Terminal"
+      href: terminal_intro.html
+    - text: "Git"
+      href: git_intro.html
+    - text: "oberlab-tk"
+      href: oberlabtk_intro.html
+    - text: "Resources"
+      href: resources.html
     - text: "License"
       href: license.html
   right:
