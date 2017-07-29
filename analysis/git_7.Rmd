@@ -1,0 +1,252 @@
+---
+title: "Conflicts"
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+#### [Back to Main Menu](git_intro.html)   
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = '~/Desktop/planets')
+```
+
+As soon as people can work in parallel, it's likely someone's going to step on someone else's toes. This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.
+
+To see how we can resolve conflicts, we must first create one. The file mars.txt currently looks like this in both partners' copies of our planets repository:
+
+```{bash, echo=FALSE}
+echo "Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity" >mars.txt
+
+```
+
+```{bash}
+cat mars.txt
+```
+
+Let's add a line to your file:
+
+```{bash, echo=FALSE}
+echo "Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+This line added to Wolfman's copy" >mars.txt
+
+```
+
+```{bash}
+cat mars.txt
+```
+
+and then push the change to GitHub:
+
+```{bash, eval=FALSE}
+git add mars.txt
+git commit -m "Adding a line in our home copy"
+```
+
+```{bash, echo=FALSE}
+echo "[master 5ae9631] Adding a line in our home copy
+ 1 file changed, 1 insertion(+)"
+```
+
+
+```{bash, eval=FALSE}
+git push origin master
+```
+
+```{bash, echo=FALSE}
+echo "Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 352 bytes, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To https://github.com/vlad/planets
+   29aba7c..dabb4c8  master -> master"
+```
+
+
+Go into the repository on Github and change the file to add the following line and commit the change :
+```{bash, echo=FALSE}
+echo "Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+We added a different line in the other copy"
+```
+
+Now, back to the terminal locally, we can commit the change locally:  
+```{bash, eval=FALSE}
+git add mars.txt
+git commit -m "Adding a line in my copy"
+```
+
+
+```{bash, echo=FALSE}
+echo "[master 07ebc69] Adding a line in my copy
+ 1 file changed, 1 insertion(+)"
+```
+
+but Git won't let us push it to GitHub:
+
+```{bash, eval=FALSE}
+git push origin master
+```
+
+```{bash, echo=FALSE}
+echo "To https://github.com/vlad/planets.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/vlad/planets.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details."
+
+```
+
+
+Git detects that the changes made in one copy overlap with those made in the other
+and stops us from trampling on our previous work.
+What we have to do is pull the changes from GitHub,
+*merge* them into the copy we're currently working in,
+and then push that.
+Let's start by pulling:
+
+```{bash, eval=FALSE}
+git pull origin master
+```
+
+```{bash, echo=FALSE}
+echo "remote: Counting objects: 5, done.        
+remote: Compressing objects: 100% (2/2), done.        
+remote: Total 3 (delta 1), reused 3 (delta 1)        
+Unpacking objects: 100% (3/3), done.
+From https://github.com/vlad/planets
+ * branch            master     -> FETCH_HEAD
+Auto-merging mars.txt
+CONFLICT (content): Merge conflict in mars.txt
+Automatic merge failed; fix conflicts and then commit the result."
+
+```
+
+
+`git pull` tells us there's a conflict,
+and marks that conflict in the affected file:
+
+```{bash, eval=FALSE}
+cat mars.txt
+```
+
+```{bash, echo=FALSE}
+echo "Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+<<<<<<< HEAD
+We added a different line in the other copy
+=======
+This line added to Wolfman's copy
+>>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d"
+
+```
+
+Our change&mdash;the one in `HEAD`&mdash;is preceded by `<<<<<<<`.
+Git has then inserted `=======` as a separator between the conflicting changes
+and marked the end of the content downloaded from GitHub with `>>>>>>>`.
+(The string of letters and digits after that marker
+identifies the commit we've just downloaded.)
+
+It is now up to us to edit this file to remove these markers
+and reconcile the changes.
+We can do anything we want: keep the change made in the local repository, keep
+the change made in the remote repository, write something new to replace both,
+or get rid of the change entirely.
+Let's replace both so that the file looks like this:
+
+```{bash, eval=FALSE}
+cat mars.txt
+```
+
+```{bash}
+echo "Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+We removed the conflict on this line"
+```
+
+
+To finish merging,
+we add `mars.txt` to the changes being made by the merge
+and then commit:
+
+```{bash, eval=FALSE}
+git add mars.txt
+git status
+```
+
+
+```{bash, echo=FALSE}
+echo "# On branch master
+# All conflicts fixed but you are still merging.
+#   (use "git commit" to conclude merge)
+#
+# Changes to be committed:
+#
+#	modified:   mars.txt
+#"
+```
+
+```{bash, eval=FALSE}
+git commit -m "Merging changes from GitHub"
+```
+
+```{bash, echo=FALSE}
+echo "[master 2abf2b1] Merging changes from GitHub"
+```
+
+Now we can push our changes to GitHub:
+
+```{bash, eval=FALSE}
+git push origin master
+```
+
+
+```{bash, echo=FALSE}
+echo "Counting objects: 10, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 697 bytes, done.
+Total 6 (delta 2), reused 0 (delta 0)
+To https://github.com/vlad/planets.git
+   dabb4c8..2abf2b1  master -> master"
+
+```
+
+Git keeps track of what we've merged with what,
+so we don't have to fix things by hand again
+when the collaborator who made the first change pulls again.
+
+![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/git.png?raw=true){ width=50% }
+
+
+
+
+
