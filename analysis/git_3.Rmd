@@ -1,0 +1,276 @@
+---
+title: "Exploring Mars"
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis',include=FALSE}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis',include=FALSE}
+```
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = '~/Desktop/planets')
+```
+
+```{bash, echo=FALSE}
+rm -r .git
+rm *
+```
+
+
+##Create a local git repository
+
+Once Git is configured, we can start using it.
+Let's create a directory for our work and then move into that directory:
+
+```{bash, eval=FALSE}
+cd ~/Desktop
+mkdir planets
+```
+Then we tell Git to make `planets` a [repository] ;a place where Git can store versions of our files:
+
+```{bash}
+git init
+```
+
+If we use `ls` to show the directory's contents,
+it appears that nothing has changed:
+
+```{bash}
+ls
+```
+
+But if we add the `-a` flag to show everything,
+we can see that Git has created a hidden directory within `planets` called `.git`:
+
+```{bash}
+ls -a
+```
+
+
+Git stores information about the project in this special sub-directory.
+If we ever delete it,
+we will lose the project's history.
+
+We can check that everything is set up correctly
+by asking Git to tell us the status of our project:
+
+```{bash}
+git status
+```
+
+* * * * * * *
+##Tracking changes
+
+###Initial commit
+Let's create a file called `mars.txt` that contains some notes
+about the Red Planet's suitability as a base.
+(We'll use `nano` to edit the file;
+you can use whatever editor you like.
+In particular, this does not have to be the `core.editor` you set globally earlier.)
+
+```{bash, eval=FALSE}
+nano mars.txt
+```
+
+Type the text below into the `mars.txt` file:  
+
+```{bash, echo=FALSE}
+echo "Cold and dry, but everything is my favorite color" > mars.txt
+```
+
+```{bash, echo=FALSE}
+cat mars.txt
+```
+
+
+`mars.txt` now contains a single line, which we can see by running:
+
+```{bash}
+ls
+```
+
+```{bash}
+cat mars.txt
+```
+
+If we check the status of our project again,
+Git tells us that it's noticed the new file:
+
+```{bash}
+git status
+```
+
+The "untracked files" message means that there's a file in the directory
+that Git isn't keeping track of.
+We can tell Git to track a file using `git add`:
+
+```{bash}
+git add mars.txt
+```
+and then check that the right thing happened:
+
+```{bash}
+git status
+```
+Git now knows that it's supposed to keep track of `mars.txt`,
+but it hasn't recorded these changes as a commit yet.
+To get it to do that,
+we need to run one more command:
+
+```{bash }
+git commit -m "Start notes on Mars as a base"
+```
+
+When we run `git commit`,
+Git takes everything we have told it to save by using `git add`
+and stores a copy permanently inside the special `.git` directory.
+This permanent copy is called a [commit]
+(or [revision]) and its short identifier is `f22b25e`
+(Your commit may have another identifier.)
+
+We use the `-m` flag (for "message")
+to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
+If we just run `git commit` without the `-m` option,
+Git will launch `nano` (or whatever other editor we configured as `core.editor`)
+so that we can write a longer message.
+
+[Good commit messages] start with a brief (<50 characters) summary of
+changes made in the commit.  If you want to go into more detail, add
+a blank line between the summary line and your additional notes.
+
+If we run `git status` now:
+
+```{bash}
+git status
+```
+
+it tells us everything is up to date.
+If we want to know what we've done recently,
+we can ask Git to show us the project's history using `git log`:
+
+
+```{bash}
+git log
+```
+
+
+`git log` lists all commits  made to a repository in reverse chronological order.
+The listing for each commit includes
+the commit's full identifier
+(which starts with the same characters as
+the short identifier printed by the `git commit` command earlier),
+the commit's author,
+when it was created,
+and the log message Git was given when the commit was created.
+
+* * * * * * *
+
+###Editing files
+Now suppose Dracula adds more information to the file.
+(Again, we'll edit with `nano` and then `cat` the file to show its contents;
+you may use a different editor, and don't need to `cat`.)
+
+```{bash, eval=FALSE}
+nano mars.txt
+cat mars.txt
+```
+
+```{bash, echo=FALSE}
+echo "The two moons may be a problem for Wolfman" >> mars.txt
+cat mars.txt
+```
+
+When we run `git status` now,
+it tells us that a file it already knows about has been modified:
+
+
+```{bash}
+git status
+```
+
+The last line is the key phrase:
+"no changes added to commit".
+We have changed this file,
+but we haven't told Git we will want to save those changes
+(which we do with `git add`)
+nor have we saved them (which we do with `git commit`).
+So let's do that now. It is good practice to always review
+our changes before saving them. We do this using `git diff`.
+This shows us the differences between the current state
+of the file and the most recently saved version:
+
+```{bash}
+git diff
+```
+
+The output is cryptic because
+it is actually a series of commands for tools like editors and `patch`
+telling them how to reconstruct one file given the other.
+If we break it down into pieces:
+
+1.  The first line tells us that Git is producing output similar to the Unix `diff` command
+    comparing the old and new versions of the file.
+2.  The second line tells exactly which versions of the file
+    Git is comparing;
+    `df0654a` and `315bf3a` are unique computer-generated labels for those versions.
+3.  The third and fourth lines once again show the name of the file being changed.
+4.  The remaining lines are the most interesting, they show us the actual differences
+    and the lines on which they occur.
+    In particular,
+    the `+` markers in the first column show where we have added lines.
+
+After reviewing our change, it's time to commit it:
+
+```{bash}
+git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+git status
+```
+
+Whoops:
+Git won't commit because we didn't use `git add` first.
+Let's fix that:
+
+```{bash}
+git add mars.txt
+git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+```
+
+Git insists that we add files to the set we want to commit
+before actually committing anything
+because we may not want to commit everything at once.
+For example,
+suppose we're adding a few citations to our supervisor's work
+to our thesis.
+We might want to commit those additions,
+and the corresponding addition to the bibliography,
+but *not* commit the work we're doing on the conclusion
+(which we haven't finished yet).
+
+To allow for this,
+Git has a special *staging area*
+where it keeps track of things that have been added to
+the current [change set]
+but not yet committed.  
+  
+  
+* * * * * * *
+##Recap
+To recap, when we want to add changes to our repository,
+we first need to add the changed files to the staging area
+(`git add`) and then commit the staged changes to the
+repository (`git commit`):
