@@ -9,10 +9,9 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="First Last" />
 
 
-<title>Untitled</title>
+<title>Starting with git</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -310,9 +309,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
-<h4 class="author"><em>First Last</em></h4>
-<h4 class="date"><em>YYYY-MM-DD</em></h4>
+<h1 class="title toc-ignore">Starting with git</h1>
 
 </div>
 
@@ -320,27 +317,19 @@ div.tocify {
 <!-- The file analysis/chunks.R contains chunks that define default settings
 shared across the workflowr files. -->
 <!-- Update knitr chunk options -->
+<pre class="r"><code># Update knitr chunk options
+# https://yihui.name/knitr/options/#chunk-options
+knitr::opts_chunk$set(
+  comment = NA,
+  fig.align = &quot;center&quot;,
+  tidy = FALSE,
+  fig.path = paste0(&quot;figure/&quot;, knitr::current_input(), &quot;/&quot;)
+)</code></pre>
 <!-- Insert the date the file was last updated -->
 <p><strong>Last updated:</strong> 2017-07-29</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 1382d52</p>
 <!-- Add your analysis here -->
-<div id="back-to-main-menu" class="section level4">
-<h4><a href="git_intro.html">Back to Main Menu</a></h4>
-</div>
-<div id="github-account" class="section level2">
-<h2>Github Account</h2>
-<p>First we need to make a github account at <a href="www.github.com" class="uri">www.github.com</a></p>
-<pre class="r"><code>$ git config --global user.name &lt;firstname lastname&gt;
-$ git config --global user.email &lt;youremail@domain&gt;
-$ git config --global core.editor &lt;editor&gt; </code></pre>
-<p>Some possible core editors: emacs, vim, nano</p>
-<p>Now go onto the Desktop and make a directory called planets</p>
-<pre class="r"><code>$ cd Desktop
-$ mkdir thesis</code></pre>
-<!-- Insert the session information into the document -->
-</div>
 
 <hr>
 <p>

@@ -1,7 +1,6 @@
 ---
-title: "Untitled"
-author: "First Last"
-date: YYYY-MM-DD
+title: "Starting with git"
+
 output: html_document
 ---
 
@@ -12,7 +11,7 @@ knitr::read_chunk("chunks.R")
 ```
 
 <!-- Update knitr chunk options -->
-```{r knitr-opts-chunk, include=FALSE}
+```{r knitr-opts-chunk}
 ```
 
 <!-- Insert the date the file was last updated -->
@@ -21,28 +20,8 @@ knitr::read_chunk("chunks.R")
 
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-```{r code-version, echo=FALSE, results='asis'}
+```{r code-version, echo=FALSE, results='asis', include=FALSE}
 ```
 
 <!-- Add your analysis here -->
-#### [Back to Main Menu](git_intro.html)   
 
-##Github Account
-First we need to make a github account at [www.github.com](www.github.com)
-
-```{r gitconfig, eval=FALSE}
-$ git config --global user.name <firstname lastname>
-$ git config --global user.email <youremail@domain>
-$ git config --global core.editor <editor> 
-```
-Some possible core editors: emacs, vim, nano
-
-
-Now go onto the Desktop and make a directory called planets
-```{r gitconfig1, eval=FALSE}
-$ cd Desktop
-$ mkdir thesis
-```
-
-
-<!-- Insert the session information into the document -->
