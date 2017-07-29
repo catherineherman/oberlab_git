@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "First Last"
+date: YYYY-MM-DD
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis'}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis'}
+```
+
+<!-- Add your analysis here -->
+#### [Back to Main Menu](git_intro.html)   
+
+
+We'll start by exploring how version control can be used
+to keep track of what one person did and when.
+Even if you aren't collaborating with other people,
+automated version control is much better than this situation:
+
+[![Piled Higher and Deeper by Jorge Cham, http://www.phdcomics.com](fig/phd101212s.png){ width=50% }](http://www.phdcomics.com)
+
+"Piled Higher and Deeper" by Jorge Cham, http://www.phdcomics.com
+
+We've all been in this situation before: it seems ridiculous to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word's "Track Changes" or Google Docs' version history.
+
+Version control systems start with a base version of the document and then save just the changes you made at each step of the way. You can think of it as a tape: if you rewind the tape and start at the base document, then you can play back each change and end up with your latest version.
+
+A version control system is a tool that keeps track of these changes for us and helps us version and merge our files. It allows you to decide which changes make up the next version, called a *commit* and keeps useful metadata about them. The complete history of commits for a particular project and their metadada make up a *repository*. Repositories can be kept in sync across different computers facilitating collaboration among different people.
+
+> ## The long history of version control systems {.callout}
+>
+> Automated version control systems are nothing new. Tools like RCS, CVS, or
+> Subversion are considered now legacy systems, offering more limited
+> capabilities than modern tools, such as Git and
+> [Mercurial](http://swcarpentry.github.io/hg-novice/). In particular, the
+> latter are *distributed*, meaning that they don't need a centralized server
+> to host the repository.
