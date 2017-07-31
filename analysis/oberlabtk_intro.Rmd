@@ -40,7 +40,7 @@ To see what repos exist there:
 ssh git@oberlab-tk.uchicago.edu repos
 ```
 
-```{bash}
+```{bash, echo=FALSE}
 echo "[   {   'accounts': {   u'smozaffari@uchicago.edu': {   u'key': u'smozaffari@uchicago.edu',
                                                         u'name': u'Sahar Mozafarri',
                                                         u'role': u'ober'},
