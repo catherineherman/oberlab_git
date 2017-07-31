@@ -119,5 +119,5 @@ Done!
 
 To make a repository (e.g. git init):   
 ```{bash, eval=FALSE}
-repos [ -r <repo_name> [ -d <description> ]] [ init ]
+ssh git@oberlab-tk.uchicago.edu repos [ -r <repo_name> [ -d <description> ]] [ init ]
 ```
