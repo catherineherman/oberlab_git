@@ -1,0 +1,44 @@
+---
+title: "Resources"
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis', include=FALSE}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis', include=FALSE}
+```
+
+<!-- Add your analysis here -->
+
+Some additional resources to practice your new skills and to learn more:  
+
+* To get your free private repos for students on github go [here](https://education.github.com/pack)  
+
+* Practicing using git and github by going through [John Blischak's paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668).  
+
+* Check out [Software Carpentry](https://software-carpentry.org/lessons/) for more resources on using Unix, git, R, python, and SQL.  
+
+* To learn more of Unix, git, R, python, LaTeX, SQL, and more, consider sitting in on (or taking!) [Stefano Allesina's course Intro Sci Comp](http://allesinalab.uchicago.edu/?page_id=35). You can also look at the [notes published from 2014](http://allesinalab.uchicago.edu/wp-content/uploads/2014/05/IntroSciComp2014.pdf).
+
+* Sign up for future seminars and take a look at previous computational workshops put on by the CRI [here](https://cri.uchicago.edu/seminar-series/).
+
+* To integrate R with git and make a nice website like this one really easily, check out [workflowr](https://jdblischak.github.io/workflowr/) R package by John Blischak.  
+
+
+Depending what you want to do there are always more resources we can point you to!
+
+

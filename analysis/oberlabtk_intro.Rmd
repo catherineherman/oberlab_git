@@ -1,0 +1,123 @@
+---
+title: "Oberlab-tk"
+
+output: 
+  html_document:
+    toc: false
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis', include=FALSE}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis', include=FALSE}
+```
+
+<!-- Add your analysis here -->
+
+This is meant to be an oberlab specific version control system. 
+
+To long on, type in the terminal :
+```{bash, eval=FALSE}
+ssh git@oberlab-tk.uchicago.edu
+```
+
+It will ask you to connect if you haven't already.  
+To see what repos exist there:  
+```{bash, eval=FALSE}
+ssh git@oberlab-tk.uchicago.edu repos
+```
+
+```{bash}
+echo "[   {   'accounts': {   u'smozaffari@uchicago.edu': {   u'key': u'smozaffari@uchicago.edu',
+                                                        u'name': u'Sahar Mozafarri',
+                                                        u'role': u'ober'},
+                        u'tiratatp@uchicago.edu': {   u'key': u'tiratatp@uchicago.edu',
+                                                      u'name': u'Tiratat Patana Anake',
+                                                      u'role': u'ober'},
+                        u'wws@uchicago.edu': {   u'key': u'wws@uchicago.edu',
+                                                 u'name': u'William Wentworth-Sheilds',
+                                                 u'role': u'ober'}},
+        u'description': u'Primal',
+        u'key': u'primal',
+        u'owner': u'tiratatp@uchicago.edu'},
+    {   'accounts': {   u'aho9001@uchicago.edu': {   u'key': u'aho9001@uchicago.edu',
+                                                     u'name': u'Al Ho',
+                                                     u'role': u'ober'},
+                        u'bbazin@uchicago.edu': {   u'key': u'bbazin@uchicago.edu',
+                                                    u'name': u'Ben Bazin',
+                                                    u'role': u'ober'},
+                        u'bhelling@uchicago.edu': {   u'key': u'bhelling@uchicago.edu',
+                                                      u'name': u'Britney Helling',
+                                                      u'role': u'ober'},
+                        u'catherineherman@uchicago.edu': {   u'key': u'catherineherman@uchicago.edu',
+                                                             u'name': u'Catherine Stanhope',
+                                                             u'role': u'ober'},
+                        u'cigartua@uchicago.edu': {   u'key': u'cigartua@uchicago.edu',
+                                                      u'name': u'Catherine Igartua',
+                                                      u'role': u'ober'},
+                        u'eethomps@uchicago.edu': {   u'key': u'eethomps@uchicago.edu',
+                                                      u'name': u'Emma Thompson',
+                                                      u'role': u'ober'},
+                        u'gabic@uchicago.edu': {   u'key': u'gabic@uchicago.edu',
+                                                   u'name': u'Gabriela Cipriano',
+                                                   u'role': u'ober'},
+                        u'jnicodemus@uchicago.edu': {   u'key': u'jnicodemus@uchicago.edu',
+                                                        u'name': u'Jessie Nicodemus Johnson',
+                                                        u'role': u'ober'},
+                        u'kmagnaye@uchicago.edu': {   u'key': u'kmagnaye@uchicago.edu',
+                                                      u'name': u'Kevin Magnaye',
+                                                      u'role': u'ober'},
+                        u'kmurray1@uchicago.edu': {   u'key': u'kmurray1@uchicago.edu',
+                                                      u'name': u'Kathleen Murray',
+                                                      u'role': u'ober'},
+                        u'lpesce@uchicago.edu': {   u'key': u'lpesce@uchicago.edu',
+                                                    u'name': u'Lorenzo Pesce',
+                                                    u'role': u'ober'},
+                        u'rbrown1@uchicago.edu': {   u'key': u'rbrown1@uchicago.edu',
+                                                     u'name': u'Rebecca Anderson',
+                                                     u'role': u'ober'},
+                        u'remy1140@uchicago.edu': {   u'key': u'remy1140@uchicago.edu',
+                                                      u'name': u'Remy Lee',
+                                                      u'role': u'ober'},
+                        u'smozaffari@uchicago.edu': {   u'key': u'smozaffari@uchicago.edu',
+                                                        u'name': u'Sahar Mozafarri',
+                                                        u'role': u'ober'},
+                        u'tiratatp@uchicago.edu': {   u'key': u'tiratatp@uchicago.edu',
+                                                      u'name': u'Tiratat Patana Anake',
+                                                      u'role': u'ober'},
+                        u'wws@uchicago.edu': {   u'key': u'wws@uchicago.edu',
+                                                 u'name': u'William Wentworth-Sheilds',
+                                                 u'role': u'ober'}},
+        u'description': u'files used in 2012-09-14 presentation',
+        u'key': u'git_intro',
+        u'owner': u'wws@uchicago.edu'},
+    {   'accounts': {   u'smozaffari@uchicago.edu': {   u'key': u'smozaffari@uchicago.edu',
+                                                        u'name': u'Sahar Mozafarri',
+                                                        u'role': u'ober'},
+                        u'wws@uchicago.edu': {   u'key': u'wws@uchicago.edu',
+                                                 u'name': u'William Wentworth-Sheilds',
+                                                 u'role': u'ober'}},
+        u'description': u'testing oberlabtk git',
+        u'key': u'myrepo',
+        u'owner': u'smozaffari@uchicago.edu'}]
+Done!
+"
+```
+
+To make a repository (e.g. git init):   
+```{bash, eval=FALSE}
+repos [ -r <repo_name> [ -d <description> ]] [ init ]
+```
