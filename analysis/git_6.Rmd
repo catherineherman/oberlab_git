@@ -1,6 +1,9 @@
 ---
 title: "GitHub"
-output: html_document
+output: 
+  html_document:
+    toc: false
+
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
@@ -25,6 +28,7 @@ knitr::read_chunk("chunks.R")
 <!-- Add your analysis here -->
 
 #### [Back to Main Menu](git_intro.html)   
+#### [Back](git_5.html) [Next](git_7.html)   
 
 ## Remote repositories are and why they are useful 
 
@@ -139,3 +143,4 @@ git pull origin master
 
 ![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/r_216778_dY73E.jpg?raw=true){ width=50% }
 
+#### [Next](git_7.html)   

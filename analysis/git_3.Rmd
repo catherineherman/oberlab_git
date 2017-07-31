@@ -1,6 +1,9 @@
 ---
 title: "Exploring Mars"
-output: html_document
+output: 
+  html_document:
+    toc: false
+
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
@@ -32,6 +35,7 @@ rm -r *
 ```
 
 #### [Back to Main Menu](git_intro.html)   
+#### [Back](git_2.html) [Next](git_4.html)   
 
 ##Create a local git repository
 
@@ -281,4 +285,7 @@ Try adding this line to the file and staging and committing it on your own:
 `But the Mummy will appreciate the lack of humidity`
 
 ![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/6a00d8341d3df553ef017743a87369970d.jpg?raw=true){ width=50% }
+
+
+#### [Next](git_4.html)   
 

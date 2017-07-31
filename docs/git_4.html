@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -165,101 +162,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3,h4",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -318,48 +220,45 @@ div.tocify {
 shared across the workflowr files. -->
 <!-- Update knitr chunk options -->
 <!-- Insert the date the file was last updated -->
-<p><strong>Last updated:</strong> 2017-07-29</p>
+<p><strong>Last updated:</strong> 2017-07-30</p>
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-<p><strong>Code version:</strong> 7405f76</p>
+<p><strong>Code version:</strong> 0d80171</p>
 <!-- Add your analysis here -->
 <div id="back-to-main-menu" class="section level4">
 <h4><a href="git_intro.html">Back to Main Menu</a></h4>
+</div>
+<div id="back-next" class="section level4">
+<h4><a href="git_3.html">Back</a> <a href="git_5.html">Next</a></h4>
 <p>If we want to see what we changed at different steps, we can use <code>git diff</code> again, but with the notation <code>HEAD~1</code>, <code>HEAD~2</code>, and so on, to refer to old commits:</p>
 <pre class="bash"><code>git diff HEAD~1 mars.txt</code></pre>
 <pre><code>diff --git a/mars.txt b/mars.txt
-index 315bf3a..1f8d579 100644
+index df0654a..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1,2 +1,4 @@
+@@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+This line added to Wolfman&#39;s copy</code></pre>
++The two moons may be a problem for Wolfman</code></pre>
 <p>In this way, we can build up a chain of commits. The most recent end of the chain is referred to as <code>HEAD</code>; we can refer to previous commits using the <code>~</code> notation, so <code>HEAD~1</code> (pronounced “head minus one”) means “the previous commit”, while <code>HEAD~123</code> goes back 123 commits from where we are now.</p>
 <p>We can also refer to commits using those long strings of digits and letters that <code>git log</code> displays. These are unique IDs for the changes, and “unique” really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. Our first commit was given the ID f22b25e3233b4645dabd0d81e651fe074bd8e73b, so let’s try this:</p>
 <pre class="bash"><code>git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
 </code></pre>
 <pre><code>diff --git a/mars.txt b/mars.txt
-index 315bf3a..1f8d579 100644
+index df0654a..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1,2 +1,4 @@
+@@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+This line added to Wolfman&#39;s copy</code></pre>
++The two moons may be a problem for Wolfman</code></pre>
 <p>That’s the right answer, but typing out random 40-character strings is annoying, so Git lets us use just the first few characters:</p>
 <pre class="bash"><code>git diff f22b25e mars.txt</code></pre>
 <pre><code>diff --git a/mars.txt b/mars.txt
-index 315bf3a..1f8d579 100644
+index df0654a..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1,2 +1,4 @@
+@@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+This line added to Wolfman&#39;s copy</code></pre>
++The two moons may be a problem for Wolfman</code></pre>
 <p>All right! So we can save changes to files and see what we’ve changed—now how can we restore older versions of things? Let’s suppose we accidentally overwrite our file:</p>
 <pre class="bash"><code>nano mars.txt</code></pre>
 <pre><code>We will need to manufacture our own oxygen</code></pre>
@@ -371,6 +270,9 @@ The two moons may be a problem for Wolfman</code></pre>
 <p>As you might guess from its name, <code>git checkout</code> checks out (i.e., restores) an old version of a file. In this case, we’re telling Git that we want to recover the version of the file recorded in <code>HEAD</code>, which is the last saved commit. If we want to go back even further, we can use a commit identifier instead:</p>
 <pre class="bash"><code>git checkout f22b25e mars.txt</code></pre>
 <p>It’s important to remember that we must use the commit number that identifies the state of the repository <em>before</em> the change we’re trying to undo. A common mistake is to use the number of the commit in which we made the change we’re trying to get rid of. In the example below, we want to retrieve the state from before the most recent commit (<code>HEAD~1</code>), which is commit <code>f22b25e</code>:</p>
+</div>
+<div id="next" class="section level4">
+<h4><a href="git_5.html">Next</a></h4>
 <!-- Insert the session information into the document -->
 </div>
 
@@ -400,8 +302,6 @@ The two moons may be a problem for Wolfman</code></pre>
 -->
 
 
-</div>
-</div>
 
 </div>
 

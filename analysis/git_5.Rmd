@@ -1,6 +1,8 @@
 ---
 title: "Ignoring files"
-output: html_document
+output: 
+  html_document:
+    toc: false
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
@@ -14,16 +16,17 @@ knitr::read_chunk("chunks.R")
 ```
 
 <!-- Insert the date the file was last updated -->
-```{r last-updated, echo=FALSE, results='asis'}
+```{r last-updated, echo=FALSE, results='asis', include=FALSE}
 ```
 
 <!-- Insert the code version (Git commit SHA1) if Git repository exists and R
  package git2r is installed -->
-```{r code-version, echo=FALSE, results='asis'}
+```{r code-version, echo=FALSE, results='asis', include=FALSE}
 ```
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
+#### [Back](git_4.html) [Next](git_6.html)   
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '~/Desktop/planets')
@@ -99,5 +102,6 @@ git status --ignored
 
 ![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/vc-xkcd.jpg?raw=true){ width=50% }
 
+#### [Next](git_6.html)   
 
 <!-- Insert the session information into the document -->

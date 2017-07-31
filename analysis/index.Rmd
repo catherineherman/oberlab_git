@@ -5,10 +5,10 @@ output:
     toc: false
 ---
 
-Most of the material for this github workshop comes from [Software Carpentry](https://software-carpentry.org/lessons/) and [John Blischak's paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668).
+Most of the material for this github workshop comes from [Software Carpentry](https://software-carpentry.org/lessons/).
 
 
-The goal of this workshop is to introduce you to the terminal and git (and maybe even [workflowr](https://github.com/jdblischak/workflowr)).
+The goal of this workshop is to introduce you to version control by way os the terminal and git.
 
 
 * Lesson 1: ["Wait, what is a terminal?"](terminal_intro.html)  

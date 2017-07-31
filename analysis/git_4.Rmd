@@ -1,6 +1,8 @@
 ---
 title: "Exploring History"
-output: html_document
+output: 
+  html_document:
+    toc: false
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
@@ -24,6 +26,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
+#### [Back](git_3.html) [Next](git_5.html)   
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '~/Desktop/planets')
@@ -119,5 +122,6 @@ the commit in which we made the change we're trying to get rid of.
 In the example below, we want to retrieve the state from before the most
 recent commit (`HEAD~1`), which is commit `f22b25e`:
 
+#### [Next](git_5.html)   
 
 <!-- Insert the session information into the document -->

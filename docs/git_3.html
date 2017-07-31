@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
@@ -165,101 +162,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3,h4",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -322,6 +224,9 @@ shared across the workflowr files. -->
  package git2r is installed -->
 <div id="back-to-main-menu" class="section level4">
 <h4><a href="git_intro.html">Back to Main Menu</a></h4>
+</div>
+<div id="back-next" class="section level4">
+<h4><a href="git_2.html">Back</a> <a href="git_4.html">Next</a></h4>
 </div>
 <div id="create-a-local-git-repository" class="section level2">
 <h2>Create a local git repository</h2>
@@ -399,7 +304,7 @@ Untracked files:
     .gitignore</code></pre>
 <p>Git now knows that it’s supposed to keep track of <code>mars.txt</code>, but it hasn’t recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
 <pre class="bash"><code>git commit -m &quot;Start notes on Mars as a base&quot;</code></pre>
-<pre><code>[master (root-commit) b2201a8] Start notes on Mars as a base
+<pre><code>[master (root-commit) c3a31c7] Start notes on Mars as a base
  1 file changed, 1 insertion(+)
  create mode 100644 mars.txt</code></pre>
 <p>When we run <code>git commit</code>, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a [commit] (or [revision]) and its short identifier is <code>f22b25e</code> (Your commit may have another identifier.)</p>
@@ -416,9 +321,9 @@ Untracked files:
 nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
 <p>it tells us everything is up to date. If we want to know what we’ve done recently, we can ask Git to show us the project’s history using <code>git log</code>:</p>
 <pre class="bash"><code>git log</code></pre>
-<pre><code>commit b2201a8a7bdac5e57fbff0f8b2b7893501f6b443
+<pre><code>commit c3a31c7f3b1790d71662e5564ac53863f91af547
 Author: Sahar V. Mozaffari &lt;smozaffari@uchicago.edu&gt;
-Date:   Sat Jul 29 16:16:49 2017 -0500
+Date:   Sun Jul 30 19:25:57 2017 -0500
 
     Start notes on Mars as a base</code></pre>
 <p><code>git log</code> lists all commits made to a repository in reverse chronological order. The listing for each commit includes the commit’s full identifier (which starts with the same characters as the short identifier printed by the <code>git commit</code> command earlier), the commit’s author, when it was created, and the log message Git was given when the commit was created.</p>
@@ -489,7 +394,7 @@ no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&q
 <p>Whoops: Git won’t commit because we didn’t use <code>git add</code> first. Let’s fix that:</p>
 <pre class="bash"><code>git add mars.txt
 git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quot;</code></pre>
-<pre><code>[master a2e2ad3] Add concerns about effects of Mars&#39; moons on Wolfman
+<pre><code>[master b6f15fb] Add concerns about effects of Mars&#39; moons on Wolfman
  1 file changed, 1 insertion(+)</code></pre>
 <p>Git insists that we add files to the set we want to commit before actually committing anything because we may not want to commit everything at once. For example, suppose we’re adding a few citations to our supervisor’s work to our thesis. We might want to commit those additions, and the corresponding addition to the bibliography, but <em>not</em> commit the work we’re doing on the conclusion (which we haven’t finished yet).</p>
 <p>To allow for this, Git has a special <em>staging area</em> where it keeps track of things that have been added to the current [change set] but not yet committed.</p>
@@ -507,6 +412,9 @@ git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quo
 <div class="figure">
 <img src="https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/6a00d8341d3df553ef017743a87369970d.jpg?raw=true" style="width:50.0%" />
 
+</div>
+<div id="next" class="section level4">
+<h4><a href="git_4.html">Next</a></h4>
 </div>
 </div>
 
@@ -536,8 +444,6 @@ git commit -m &quot;Add concerns about effects of Mars&#39; moons on Wolfman&quo
 -->
 
 
-</div>
-</div>
 
 </div>
 

@@ -1,7 +1,9 @@
 ---
 title: "Git Intro"
 
-output: html_document
+output: 
+  html_document:
+    toc: false
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
