@@ -1,8 +1,6 @@
 ---
 title: "Exploring Mars"
-output: 
-  html_document:
-    toc: false
+output:   html_document
 
 ---
 
@@ -35,7 +33,7 @@ rm -r *
 ```
 
 #### [Back to Main Menu](git_intro.html)   
-#### [Back](git_2.html) [Next](git_4.html)   
+#### [<< Back](git_2.html) [Next >>](git_4.html)   
 
 ##Create a local git repository
 

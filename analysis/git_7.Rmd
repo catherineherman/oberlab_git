@@ -1,8 +1,6 @@
 ---
 title: "Conflicts"
-output: 
-  html_document:
-    toc: false
+output:   html_document
 
 ---
 
@@ -27,6 +25,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
+#### [<< Back](git_6.html)
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '~/Desktop/planets')

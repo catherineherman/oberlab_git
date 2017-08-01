@@ -1,8 +1,6 @@
 ---
 title: "What is git and why should I use git?"
-output: 
-  html_document:
-    toc: false
+output:   html_document
 ---
 
 
@@ -27,7 +25,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
-#### [Next](git_1.html)   
+#### [Next >>](git_1.html)   
 
 
 We'll start by exploring how version control can be used

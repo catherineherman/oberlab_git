@@ -1,8 +1,6 @@
 ---
 title: "Exploring History"
-output: 
-  html_document:
-    toc: false
+output:   html_document
 ---
 
 <!-- The file analysis/chunks.R contains chunks that define default settings
@@ -26,7 +24,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
-#### [Back](git_3.html) [Next](git_5.html)   
+#### [<< Back](git_3.html) [Next >>](git_5.html)   
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '~/Desktop/planets')
