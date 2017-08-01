@@ -27,6 +27,7 @@ knitr::read_chunk("chunks.R")
 #### [Back to Main Menu](git_intro.html)   
 #### [Next >>](git_1.html)   
 
+## Version Control
 
 We'll start by exploring how version control can be used
 to keep track of what one person did and when.

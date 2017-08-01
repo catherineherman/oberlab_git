@@ -326,18 +326,23 @@ shared across the workflowr files. -->
 </div>
 <div id="back-next" class="section level4">
 <h4><a href="git_4.html">&lt;&lt; Back</a> <a href="git_6.html">Next &gt;&gt;</a></h4>
+</div>
+<div id="what-not-to-track" class="section level2">
+<h2>What not to track</h2>
+<p>You can version control any file that you put in a Git repository, whether it is text-based, an image, or a giant data file. However, just because you can version control something, does not mean you should. Git works best for plain, text-based documents such as your scripts or your manuscript if written in LaTeX or Markdown. This is because for text files, Git saves the entire file only the first time you commit it and then saves just your changes with each commit. This takes up very little space, and Git has the capability to compare between versions (using git diff). A good rule of thumb is to version control anything text-based: your scripts or manuscripts if they are written in plain text. Things not to version control are large data files that never change, binary files (including Word and Excel documents), and the output of your code.</p>
+<p>In addition to the type of file, you need to consider the content of the file. If you plan on sharing your commits publicly using GitHub, ensure you are not committing any files that contain sensitive information, such as human subject data or passwords.<br />
+- <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004668">from here</a></p>
 <p>What if we have files that we do not want Git to track for us, like backup files created by our editor or intermediate files created during data analysis. Let’s create a few dummy files:</p>
 <pre class="bash"><code>mkdir results
 touch a.dat b.dat c.dat results/a.out results/b.out</code></pre>
+<pre><code>mkdir: results: File exists</code></pre>
 <p>and see what Git says:</p>
 <pre class="bash"><code>git status</code></pre>
 <pre><code>On branch master
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-
-    .gitignore
-
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+nothing to commit, working tree clean</code></pre>
+</div>
+<div id="gitignore-file" class="section level2">
+<h2>gitignore file</h2>
 <p>Putting these files under version control would be a waste of disk space. What’s worse, having them all listed could distract us from changes that actually matter, so let’s tell Git to ignore them.</p>
 <p>We do this by creating a file in the root directory of our project called <code>.gitignore</code>:</p>
 <pre class="bash"><code>nano .gitignore
@@ -348,19 +353,13 @@ results/</code></pre>
 <p>Once we have created this file, the output of <code>git status</code> is much cleaner:</p>
 <pre class="bash"><code>git status</code></pre>
 <pre><code>On branch master
-Untracked files:
-  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
-
-    .gitignore
-
-nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+nothing to commit, working tree clean</code></pre>
 <p>The only thing Git notices now is the newly-created <code>.gitignore</code> file. You might think we wouldn’t want to track it, but everyone we’re sharing our repository with will probably want to ignore the same things that we’re ignoring. Let’s add and commit <code>.gitignore</code>:</p>
 <pre class="bash"><code>git add .gitignore
 git commit -m &quot;Add the ignore file&quot;
 git status</code></pre>
-<pre><code>[master 9dce584] Add the ignore file
- 1 file changed, 2 insertions(+)
- create mode 100644 .gitignore
+<pre><code>On branch master
+nothing to commit, working tree clean
 On branch master
 nothing to commit, working tree clean</code></pre>
 <p>As a bonus, using <code>.gitignore</code> helps us avoid accidentally adding files to the repository that we don’t want to track:</p>
@@ -381,10 +380,10 @@ nothing to commit, working tree clean</code></pre>
 <img src="https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/vc-xkcd.jpg?raw=true" style="width:50.0%" />
 
 </div>
-</div>
 <div id="next" class="section level4">
 <h4><a href="git_6.html">Next</a></h4>
 <!-- Insert the session information into the document -->
+</div>
 </div>
 
 <hr>

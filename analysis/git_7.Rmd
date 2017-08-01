@@ -25,7 +25,7 @@ knitr::read_chunk("chunks.R")
 
 <!-- Add your analysis here -->
 #### [Back to Main Menu](git_intro.html)   
-#### [<< Back](git_6.html)
+#### [<< Back](git_6.html) [Next >>](git_8.html)
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = '~/Desktop/planets')
@@ -249,6 +249,6 @@ when the collaborator who made the first change pulls again.
 ![](https://github.com/smozaffari/oberlab_git/blob/master/analysis/fig/git.png?raw=true){ width=50% }
 
 
-
+####[Next](git_8.html)
 
 
