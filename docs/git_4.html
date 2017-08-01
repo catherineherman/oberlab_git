@@ -332,38 +332,32 @@ shared across the workflowr files. -->
 <p>If we want to see what we changed at different steps, we can use <code>git diff</code> again, but with the notation <code>HEAD~1</code>, <code>HEAD~2</code>, and so on, to refer to old commits:</p>
 <pre class="bash"><code>git diff HEAD~1 mars.txt</code></pre>
 <pre><code>diff --git a/mars.txt b/mars.txt
-index df0654a..1f8d579 100644
+index df0654a..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,4 @@
+@@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+This line added to Wolfman&#39;s copy</code></pre>
++The two moons may be a problem for Wolfman</code></pre>
 <p>In this way, we can build up a chain of commits. The most recent end of the chain is referred to as <code>HEAD</code>; we can refer to previous commits using the <code>~</code> notation, so <code>HEAD~1</code> (pronounced “head minus one”) means “the previous commit”, while <code>HEAD~123</code> goes back 123 commits from where we are now.</p>
 <p>We can also refer to commits using those long strings of digits and letters that <code>git log</code> displays. These are unique IDs for the changes, and “unique” really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. Our first commit was given the ID f22b25e3233b4645dabd0d81e651fe074bd8e73b, so let’s try this:</p>
 <pre class="bash"><code>git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
 </code></pre>
 <pre><code>diff --git a/mars.txt b/mars.txt
-index df0654a..1f8d579 100644
+index df0654a..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,4 @@
+@@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+This line added to Wolfman&#39;s copy</code></pre>
++The two moons may be a problem for Wolfman</code></pre>
 <p>That’s the right answer, but typing out random 40-character strings is annoying, so Git lets us use just the first few characters:</p>
 <pre class="bash"><code>git diff f22b25e mars.txt</code></pre>
 <pre><code>diff --git a/mars.txt b/mars.txt
-index df0654a..1f8d579 100644
+index df0654a..315bf3a 100644
 --- a/mars.txt
 +++ b/mars.txt
-@@ -1 +1,4 @@
+@@ -1 +1,2 @@
  Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+This line added to Wolfman&#39;s copy</code></pre>
++The two moons may be a problem for Wolfman</code></pre>
 <p>All right! So we can save changes to files and see what we’ve changed—now how can we restore older versions of things? Let’s suppose we accidentally overwrite our file:</p>
 <pre class="bash"><code>nano mars.txt</code></pre>
 <pre><code>We will need to manufacture our own oxygen</code></pre>
