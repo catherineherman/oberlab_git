@@ -34,7 +34,7 @@ knitr::read_chunk("chunks.R")
 * ### [Ignoring files](git_5.html)
 * ### [GitHub](git_6.html)
 * ### [Conflicts](git_7.html)
-
+* ### [Contributing](git_8.html)
 
 <!-- Insert the session information into the document -->
 ```{r session-info, echo=FALSE, eval=FALSE}
