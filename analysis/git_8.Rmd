@@ -1,0 +1,143 @@
+---
+title: "Contributing"
+output: html_document
+---
+
+<!-- The file analysis/chunks.R contains chunks that define default settings
+shared across the workflowr files. -->
+```{r read-chunk, include=FALSE, cache=FALSE}
+knitr::read_chunk("chunks.R")
+```
+
+<!-- Update knitr chunk options -->
+```{r knitr-opts-chunk, include=FALSE}
+```
+
+<!-- Insert the date the file was last updated -->
+```{r last-updated, echo=FALSE, results='asis', include=FALSE}
+```
+
+<!-- Insert the code version (Git commit SHA1) if Git repository exists and R
+ package git2r is installed -->
+```{r code-version, echo=FALSE, results='asis', include=FALSE}
+```
+
+<!-- Add your analysis here -->
+
+
+#### [Back to Main Menu](git_intro.html)   
+#### [<< Back](git_7.html) 
+
+##Collaborating 
+
+Let’s all collaborate on a single project. We want to get a rough sense of where everyone is from who is here for the bootcamp. We have a repo set up where we would like you to submit a file that lists either the state you’re from (or country if you’re international) with your initials (for example: california_SVM.txt).
+
+The first thing you need to do is navigate to this repo: https://github.com/oberlab/oberlab_git_exercise
+
+Next, we are going to create a copy of this repository in our own GitHub accounts by clicking the “Fork” button in the upper right and corner of the repo page:
+
+```{bash, eval=FALSE}
+mkdir exercise
+cd 
+git clone https://github.com/YOUR_USER_NAME/forkme.git
+```
+
+```{bash, echo=FALSE}
+echo "Cloning into 'forkme'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done."
+```
+
+```{bash, eval=FALSE}
+cd oberlab_git_exercise
+git remote -v
+```
+
+```{bash, echo=FALSE}
+echo "origin	https://github.com/smozaffari/oberlab_git_exercise.git (fetch)
+origin	https://github.com/smozaffari/oberlab_git_exercise.git (push)
+"
+```
+
+The remotes show a connection to the forked copy of forkme that sits in your GitHub account. However, what if changes happened in the original `forkme` repository since you’ve forked it? In order to stay up to date with the original repository, we need to set a remote link called `upstream` which links to the original forkme repo:
+
+```{bash, eval=FALSE}
+git remote add upstream https://github.com/oberlab/oberlab_git_exercise.git
+git remote -v
+```
+
+
+```{bash, echo=FALSE}
+echo "origin	https://github.com/smozaffari/oberlab_git_exercise.git (fetch)
+origin	https://github.com/smozaffari/oberlab_git_exercise.git (push)
+upstream	https://github.com/oberlab/oberlab_git_exercise.git (fetch)
+upstream	https://github.com/oberlab/oberlab_git_exercise.git (push)"
+```
+
+
+`upstream` allows us to pull down changes from the original repository. This will keep us up to date with the current state of the repository. We just forked and cloned this repository, so it’s unlikely changes have already occurred. Regardless, a good practice is to always ensure you are up-to-date with the upstream repo before starting to make changes. To do so, we need to `pull`:
+
+```{bash, eval=FALSE}
+git pull upstream master
+```
+
+```{bash, echo=FALSE}
+echo "From https://github.com/oberlab/oberlab_git_exercise
+ * branch            master     -> FETCH_HEAD
+Already up-to-date."
+
+```
+
+You can see our forked copies were up-to-date with the original repo, and no new files were added. I’m going to make a change to this repository and have you re-fetch to demonstrate what happens when there are differences between your local copy and what is upstream. When I give you the go ahead, run the pull command again:
+
+```{bash, eval=FALSE}
+git pull upstream master
+```
+
+Now that we know we’re up to date with the upstream repo, add your own file to the repository. Add and commit that file locally:
+
+```{bash, eval=FALSE}
+touch place_initials.txt
+git add place_initials.txt
+git commit -m "added my file"
+```
+
+```{bash, echo=FALSE}
+echo "0 files changed
+ create mode 100644 hogwarts_HP.txt"
+```
+
+Your new file exists in your local repository, but it doesn’t exist yet on your repo on GitHub or in the upstream repository. First, let’s push these changes to our forkme repository under our GitHub account
+
+```{bash, eval=FALSE}
+git push origin master
+```
+
+```{bash, echo=FALSE}
+echo "Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 488 bytes, done.
+Total 5 (delta 1), reused 0 (delta 0)
+To https://github.com/oberlab/oberlab_git_exercise.git
+   3785f25..31e7bae  master -> master"
+```
+
+
+Note that not only was the file we just created pushed to our remote, but also the `california_SVM.txt` file we had pulled from the upstream earlier.
+
+We want to make our contribution to the original forkme repo. To do so, we need to issue what’s called a pull request in GitHub jargon. A pull request is just what it sounds like: this is a message from you to the owner of the upstream repository, where you request them to pull your changes. Pull requests give the owner of the upstream repository control of whether to accept your changes or not.
+
+Let’s issue pull requests of our newly added file, to incorporate that into the original forkme repository. On GitHub, click the button to the right that says “Pull Requests”
+
+
+Here you’ll see a dropdown saying we want to merge the changes from our head fork (your_user_name/oberlab_git_exercise) to the base fork (oberlab/oberlab_git_exercise). To issue the pull request, click the green “Create pull request button.”  
+
+It’s useful to enter details about why you are requesting the pull request and what you’ve changed in the next screen.    
+
+
+Once you’ve issued the PR, you’ll see a screen like what is shown below. On this screen, you can enter additional comments to send to the owner (and they can send you comments as well). Additionally, you can delete the PR if you change your mind about the pull.  
+
+Once you’ve issued the PR, and email is sent to the owner of the upstream repository. Over the next few minutes, I will accept PRs from the lab. Look at the repository link to see where everyone is from!  
